@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block extra-style %}
+<style>
+    .login-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* margin-top: 150px; */
+        /* margin-bottom: 150px; */
+    }
+
+    .login-container {
+        width: 450px;
+        height: 500px;
+        /* 폼 너비 */
+        padding: 20px;
+        background: white;
+        /* 배경색 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* 그림자 효과 */
+        border-radius: 8px;
+        /* 모서리 둥글게 */
+    }
+
+    .login-form p {
+        margin: 12px 0;
+        /* 폼 내 p 태그의 마진 조정 */
+    }
+
+    .login-button {
+        width: 100%;
+        /* 버튼 너비 전체 */
+        padding: 10px;
+        /* 버튼 패딩 */
+        background-color: #007bff;
+        /* 버튼 배경색 */
+        color: white;
+        /* 버튼 텍스트 색상 */
+        border: none;
+        /* 버튼 테두리 없음 */
+        border-radius: 4px;
+        /* 버튼 모서리 둥글게 */
+        cursor: pointer;
+        /* 마우스 오버시 커서 변경 */
+    }
+
+    .login-button:hover {
+        background-color: #0056b3;
+        /* 버튼 호버시 배경색 변경 */
+    }
+
+    .messages p {
+        color: red;
+        /* 메시지 색상 */
+        text-align: center;
+        /* 메시지 텍스트 중앙 정렬 */
+    }
+</style>
+{% endblock extra-style %}
+
+
+
+{% block content %}
+<div class="login-wrapper py-5">
+    <div class="login-container">
+        <h2 class="text-center ">BLOOM 로고</h2>
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <div class="py-2">
+                <span class="fw-bold ">이메일 주소</span>
+                <div class="py-1">{{form.username|add_class:"form-control"|attr:"placeholder:예) example@example.com"}}
+                </div>
+            </div>
+            <div class="py-2 ">
+                <span class="fw-bold ">비밀번호</span>
+                <div class="py-1">{{form.password|add_class:"form-control"}}</div>
+            </div>
+            <div class="py-3">
+                <button type="submit" class="login-button">로그인</button>
+            </div>
+        </form>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+<div class="container p-4 pb-0">
+    <!-- Section: Links -->
+    <hr class="my-3">
+
+    <section class="">
+        <!--Grid row-->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 fw-bold ">
+                    Company name
+                </h6>
+                <p class="text-secondary ">
+                    Here you can use rows and columns to organize your footer
+                    content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit.
+                </p>
+            </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 fw-bold ">Products</h6>
+                <p>
+                    <a class="text-secondary">MDBootstrap</a>
+                </p>
+                <p>
+                    <a class="text-secondary">MDWordPress</a>
+                </p>
+                <p>
+                    <a class="text-secondary">BrandFlow</a>
+                </p>
+                <p>
+                    <a class="text-secondary">Bootstrap Angular</a>
+                </p>
+            </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 fw-bold ">
+                    Useful links
+                </h6>
+                <p>
+                    <a class="text-secondary">Your Account</a>
+                </p>
+                <p>
+                    <a class="text-secondary">Become an Affiliate</a>
+                </p>
+                <p>
+                    <a class="text-secondary">Shipping Rates</a>
+                </p>
+                <p>
+                    <a class="text-secondary">Help</a>
+                </p>
+            </div>
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none" />
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 fw-bold ">Contact</h6>
+                <p><i class="fas fa-home mr-3"></i> Nowhere and everywhere</p>
+                <p><i class="fas fa-envelope mr-3"></i> madeffort0903@gmail.com</p>
+                <p><i class="fas fa-phone mr-3"></i><a href="tel:+0123456788" class="text-decoration-none "> + 01 234 567 88</a></p>
+                <p><i class="fas fa-print mr-3"></i><a href="tel:+0123456789" class="text-decoration-none "> + 01 234 567 89</a></p>
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+
+    <hr class="my-3">
+
+    <!-- Section: Copyright -->
+    <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center">
+            <!-- Grid column -->
+            <div class="col-md-7 col-lg-8 text-center text-md-start">
+                <!-- Copyright -->
+                <div class="p-3">
+                    © 2024 Copyright
+                    <a class="text-secondary " href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>
+                <!-- Copyright -->
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                <!-- Facebook -->
+                <a class="btn btn-outline-dark btn-floating m-1" class="text-body-secondary" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <!-- Github-->
+                <a class="btn btn-outline-dark btn-floating m-1" class="text-body-secondary " role="button" href="https://github.com/madEffort/landscaping-tree-auction.git"><i
+                        class="fab fa-github"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-dark  btn-floating m-1" class="text-body-secondary" role="button"><i
+                        class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-dark btn-floating m-1" class="text-body-secondary" role="button"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <!-- Grid column -->
+        </div>
+    </section>
+    <!-- Section: Copyright -->
+</div>
+{% endblock footer %}
